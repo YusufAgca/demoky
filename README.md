@@ -1,4 +1,4 @@
-# Demoky E-Ticaret Platformu — Mimari ve Teknik Dokümantasyon
+# Demoky E-Ticaret Platformu — Mimari ve Teknik Dokümantasyon  -  https://demoky.vercel.app/
 
 Bu doküman, **Demoky** e-ticaret vitrin uygulamasının dosya mimarisini, mühendislik standartlarını ve kullanılan teknolojilerin proje içerisinde nerede ve nasıl uygulandığını açıklar.
 
