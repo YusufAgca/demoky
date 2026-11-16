@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * Elonky Global Stylesheet & Design Tokens
+ * 
+ * Mimari Açıklama:
+ * Bu stil dosyası, Elonky tasarım sisteminin temel değişkenlerini, CSS custom properties
+ * katmanını ve genel sıfırlama (reset) kurallarını içerir.
+ */
+
+:root {
+  /* Font Families */
+  --font-graphik: "graphikCritical", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-guardian: "guardianFont", Georgia, Cambria, "Times New Roman", serif;
+
+  /* Elonky Core Brand Tokens */
+  --elonky-brand: #cb5810;
+  --elonky-brand-hover: #b54c0b;
+  --elonky-radius: 0.625rem;
+
+  /* Surface & Background */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-dark: #061d21;
+
+  /* Typography Colors */
+  --text-main: #0c0c0c;
+  --text-muted: #667085;
+  --text-light: #ffffff;
+
+  /* Borders & Dividers */
+  --border-subtle: #e4e7ec;
+  --border-focus: #cb5810;
+}
+
+/* Temel HTML ve Gövde Sıfırlaması */
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  color: var(--text-main);
+  background-color: var(--bg-primary);
+  font-family: var(--font-graphik);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  overflow-x: hidden;
+}
+
+/* Yatay kaydırma çubuklarını gizleme (Kategori menüsü ve Slider'lar için) */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Ant Design Global Stil Uyumlaması (Tailwind ile çakışmayı önleme) */
+.ant-modal-mask {
+  backdrop-filter: blur(4px);
+}
+
+.ant-btn-primary {
+  background-color: var(--elonky-brand) !important;
+}
+
+.ant-btn-primary:hover {
+  background-color: var(--elonky-brand-hover) !important;
+}
+
+/* =========================================================================
+   Elonky 1:1 Campaign Banner Animations (Cart, Bag, Gift, Floating Ticket)
+   ========================================================================= */
+
+@keyframes eb-cart-roll {
+  0%, 60%, 7%, 100% { transform: translateX(0) rotate(-4deg); }
+  15% { transform: translateX(-4px) rotate(-6deg); }
+  27%, 40% { transform: translate(5px, -2px) rotate(-2deg); }
+}
+
+@keyframes eb-bag-settle {
+  0%, 45%, 9%, 100% { transform: translateY(0) rotate(0); }
+  17% { transform: translateY(-10px) rotate(-3deg); }
+  26% { transform: translateY(2px) rotate(1deg); }
+  32% { transform: translateY(-2px); }
+}
+
+@keyframes eb-gift-settle {
+  0%, 14%, 48%, 100% { transform: translateY(0) rotate(0); }
+  23% { transform: translateY(-7px) rotate(4deg); }
+  31% { transform: translateY(1px) rotate(-1deg); }
+}
+
+@keyframes eb-wheel-roll {
+  0%, 60%, 7%, 100% { transform: rotate(0); }
+  15% { transform: rotate(-16deg); }
+  27%, 40% { transform: rotate(32deg); }
+}
+
+@keyframes eb-summary-float {
+  0%, 12%, 62%, 100% { transform: translateY(0) rotate(-2deg); }
+  31%, 42% { transform: translateY(-4px) rotate(-0.5deg); }
+}
+
+@keyframes eb-card-light {
+  0%, 21% { transform: translateX(-180%) rotate(18deg); }
+  44%, 100% { transform: translateX(390%) rotate(18deg); }
+}
+
+.animate-cart-roll {
+  transform-origin: 50% 90%;
+  animation: eb-cart-roll 8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+.animate-bag-settle {
+  transform-box: fill-box;
+  transform-origin: 50% 90%;
+  animation: eb-bag-settle 8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+.animate-gift-settle {
+  transform-box: fill-box;
+  transform-origin: 50% 90%;
+  animation: eb-gift-settle 8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+.animate-wheel-roll {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: eb-wheel-roll 8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+.animate-summary-float {
+  transform-origin: 50% 60%;
+  animation: eb-summary-float 8s ease-in-out infinite;
+}
+
+.animate-card-light {
+  animation: eb-card-light 8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
